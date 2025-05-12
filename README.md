@@ -21,23 +21,23 @@ source get_pretrained_models.sh   # Files will be downloaded to `checkpoints` di
 
 Please refer to the [Meta Finger](https://github.com/han-xudong/meta-finger) repository for the hardware.
 
-### Use our models
+It's also necessary to set the camera parameters in `configs/camera.yaml` file before running the code.
 
-```python
-from depthfinger import DepthFinger
+### Run
 
-depthfinger = DepthFinger(model='vitl', camera_params=camera_params)
-
-result = depthfinger.infer()
+```bash
+python run.py --model <vits | vitb | vitl> [--pred_only]
 ```
 
-The `camera_params` is a dictionary containing the camera intrinsic parameters, which is defined via `.yaml` file. The `model` can be one of the following:
+The `model` can be one of the following:
 
 | Name | Model | Params |
 |:-:|:-:|:-:|
 | `vits` | Depth-Anything-V2-Small | 24.8M |
 | `vitm` | Depth-Anything-V2-Base | 97.5M |
 | `vitl` | Depth-Anything-V2-Large | 335.3M |
+
+The `pred_only` flag is used to only return the predicted depth map without raw image.
 
 ## Acknowledgement
 
